@@ -13,7 +13,10 @@ public class BirdController : MonoBehaviour
 
 
     public bool isDead;
-    
+
+    public GameManager gameManager;
+
+    public GameObject DeadScreen;
 
     void Start()
     {
@@ -29,5 +32,28 @@ public class BirdController : MonoBehaviour
             rb.velocity = Vector2.up * zýplamaGucu;
         }
 
+
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D temas)
+    {
+        if (temas.gameObject.name == "SkorKutu")
+        {
+            gameManager.SkorUpdate();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D enemy)
+    {
+        if (enemy.gameObject.tag == "enemy")
+        {
+            isDead = true;
+            Time.timeScale = 0;
+
+            DeadScreen.SetActive(true);
+
+            
+        }
     }
 }

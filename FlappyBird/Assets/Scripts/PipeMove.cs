@@ -18,4 +18,6 @@ public class PipeMove : MonoBehaviour
         transform.position += Vector3.left * speed * Time.deltaTime;
         
     }
+
+   
 }
